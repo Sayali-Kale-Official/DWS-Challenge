@@ -1,0 +1,13 @@
+package com.dws.challenge.web;
+
+import java.math.BigDecimal;
+
+import lombok.Data;
+
+@Data
+public class TransferDetails {
+
+	private String fromAccountId;
+    private String toAccountId;
+    private BigDecimal amount;
+}

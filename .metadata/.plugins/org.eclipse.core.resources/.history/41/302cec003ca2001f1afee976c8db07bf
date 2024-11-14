@@ -1,0 +1,5 @@
+package com.dws.challenge.web;
+
+public class TransferDetails {
+
+}

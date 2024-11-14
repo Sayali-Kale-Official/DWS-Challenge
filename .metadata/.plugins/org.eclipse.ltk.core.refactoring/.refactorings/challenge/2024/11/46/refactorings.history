@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;TransferDetails.java&apos; to &apos;challenge/src/main/java/com.dws.challenge.domain&apos;&#x0D;&#x0A;- Original project: &apos;challenge&apos;&#x0D;&#x0A;- Destination element: &apos;challenge/src/main/java/com.dws.challenge.domain&apos;&#x0D;&#x0A;- Original element: &apos;com.dws.challenge.web.TransferDetails.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.dws.challenge.domain" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.dws.challenge.web{TransferDetails.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1731607081284" units="1" version="1.0"/>
+</session>

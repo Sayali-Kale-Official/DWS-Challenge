@@ -1,0 +1,52 @@
+package com.dws.challenge;
+
+import com.dws.challenge.domain.Account;
+import com.dws.challenge.service.AccountsService;
+import com.dws.challenge.service.NotificationService;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+import java.math.BigDecimal;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+@SpringBootTest
+class AccountsServiceTest {
+
+  @Autowired
+  private AccountsService accountsService;
+
+  @MockBean
+  private NotificationService notificationService;  // Mock NotificationService
+
+  @Test
+  void transferMoney() {
+    Account accountFrom = new Account("Id-1", new BigDecimal("1000"));
+    Account accountTo = new Account("Id-2", new BigDecimal("500"));
+    accountsService.createAccount(accountFrom);
+    accountsService.createAccount(accountTo);
+
+    // Perform the transfer
+    accountsService.transferMoney("Id-1", "Id-2", new BigDecimal("200"));
+    
+    // Assert balances after transfer
+    assertThat(accountFrom.getBalance()).isEqualByComparingTo("800");
+    assertThat(accountTo.getBalance()).isEqualByComparingTo("700");
+  }
+
+  @Test
+  void transferMoney_insufficientBalance() {
+    Account accountFrom = new Account("Id-1", new BigDecimal("100"));
+    Account accountTo = new Account("Id-2", new BigDecimal("500"));
+    accountsService.createAccount(accountFrom);
+    accountsService.createAccount(accountTo);
+
+    assertThrows(IllegalArgumentException.class, () -> 
+      accountsService.transferMoney("Id-1", "Id-2", new BigDecimal("200"))
+    );
+  }
+}
